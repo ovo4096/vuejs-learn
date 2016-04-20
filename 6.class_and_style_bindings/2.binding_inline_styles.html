@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Binding Inline Styles</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- Object Syntax -->
+            <div v-bind:style=
+            "{ color: activeColor, fontSize: fontSize + 'px' }">test</div>
+            <div v-bind:style="styleObject">test</div>
+            <!-- Object Syntax End -->
+            
+            <!-- Array Syntax -->
+            <div v-bind:style="[styleObjectA, styleObjectB]">test</div>
+            <div v-bind:style=
+            "[isA ? styleObjectA : '', isB ? styleObjectB : '']">test</div>
+            <div v-bind:style=
+            "[{ color: activeColor, fontSize: fontSize + 'px' }]">test</div>
+            <!-- Array Syntax End -->
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    activeColor: 'red',
+                    fontSize: 30,
+                    styleObject: {
+                        color: 'red',
+                        fontSize: '13px'
+                    },
+                    styleObjectA: {
+                        color: 'green',
+                        fontSize: '60px'
+                    },
+                    styleObjectB: {
+                        color: 'yellow',
+                        fontSize: '120px'
+                    },
+                    isA: true,
+                    isB: false,
+                }
+            })
+        </script>
+    </body>
+</html>

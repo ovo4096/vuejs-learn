@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Binding HTML Bindings</title>
+        <style media="screen">
+            .static {
+                color: black;
+            }
+
+            .class-a {
+                color: red;
+            }
+
+            .class-b {
+                color: green;
+            }
+
+            .class-c {
+                color: yellow;
+            }
+        </style>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- Object Syntax -->
+            <div class="static"
+            v-bind:class="{ 'class-a': isA, 'class-b': isB }">test</div>
+            <!-- bind to an object -->
+            <div v-bind:class="classObject">test</div>
+            <!-- Object Syntax End -->
+
+            <!-- Array Syntax -->
+            <div v-bind:class="[classA, classB]">test</div>
+            <div v-bind:class="[classA, isB ? classB : '']">test</div>
+            <div v-bind:class="[classA, { 'class-b': isB, 'class-c': isC }]">test</div>
+            <!-- Array Syntax End -->
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    isA: true,
+                    isB: false,
+                    isC: true,
+                    classObject: {
+                        'static': true,
+                        'class-a': true,
+                        'class-b': false
+                    },
+
+                    classA: 'class-a',
+                    classB: 'class-b',
+                    // classC: 'class-c',
+                }
+            })
+        </script>
+    </body>
+</html>
