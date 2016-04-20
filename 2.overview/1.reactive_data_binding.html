@@ -14,25 +14,25 @@
         <div id="example-2">
             <p v-if="greeting">Hello!</p>
         </div>
-    </body>
-    <script type="text/javascript">
-        // this is our Model
-        var exampleData = {
-            name: 'Vue.js'
-        }
-
-        // create a Vue instance, or, a "ViewModel"
-        // which links the View and the Model
-        var exampleVM = new Vue({
-            el: '#example-1',
-            data: exampleData
-        })
-
-        var exampleVM2 = new Vue({
-            el: '#example-2',
-            data: {
-                greeting: true
+        <script type="text/javascript">
+            // this is our Model
+            var exampleData = {
+                name: 'Vue.js'
             }
-        })
-    </script>
+
+            // create a Vue instance, or, a "ViewModel"
+            // which links the View and the Model
+            var exampleVM = new Vue({
+                el: '#example-1',
+                data: exampleData
+            })
+
+            var exampleVM2 = new Vue({
+                el: '#example-2',
+                data: {
+                    greeting: true
+                }
+            })
+        </script>
+    </body>
 </html>

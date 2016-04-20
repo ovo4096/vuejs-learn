@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Computed Property vs. $watch</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <!-- use $watch -->
+        <div id="demo">
+            {{ fullName }}<br>
+            <input v-model="firstName"><br>
+            <input v-model="lastName">
+        </div>
+        <!-- use computed property -->
+        <div id="demo2">
+            {{ fullName }}<br>
+            <input v-model="firstName"><br>
+            <input v-model="lastName">
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#demo',
+                data: {
+                    firstName: 'Foo',
+                    lastName: 'Bar',
+                    fullName: 'Foo Bar'
+                }
+            })
+
+            vm.$watch('firstName', function (val) {
+                this.fullName = val + ' ' + this.lastName
+            })
+
+            vm.$watch('lastName', function (val) {
+                this.fullName = this.firstName + ' ' + val
+            })
+
+            new Vue({
+                el: '#demo2',
+                data: {
+                    firstName: 'Foo',
+                    lastName: 'Bar'
+                },
+                computed: {
+                    fullName: function () {
+                        return this.firstName + ' ' + this.lastName
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

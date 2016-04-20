@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Basic Example</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="example">
+            a={{ a }}, b={{ b }}
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#example',
+                data: {
+                    a: 1
+                },
+                computed: {
+                    // a computed getter
+                    b: function () {
+                        // `this` points to the vm instance
+                        return this.a + 1
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

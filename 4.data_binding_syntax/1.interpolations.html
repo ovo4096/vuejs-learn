@@ -21,15 +21,15 @@
 
         <!-- Attributes -->
         <div class="{{ color }}">Attributes</div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue.js!',
+                    raw_html: '<h1>Raw Html</h1>',
+                    color: 'red',
+                }
+            })
+        </script>
     </body>
-    <script type="text/javascript">
-        new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue.js!',
-                raw_html: '<h1>Raw Html</h1>',
-                color: 'red',
-            }
-        })
-    </script>
 </html>
