@@ -12,7 +12,7 @@
             "{ color: activeColor, fontSize: fontSize + 'px' }">test</div>
             <div v-bind:style="styleObject">test</div>
             <!-- Object Syntax End -->
-            
+
             <!-- Array Syntax -->
             <div v-bind:style="[styleObjectA, styleObjectB]">test</div>
             <div v-bind:style=
@@ -20,6 +20,10 @@
             <div v-bind:style=
             "[{ color: activeColor, fontSize: fontSize + 'px' }]">test</div>
             <!-- Array Syntax End -->
+
+            <!-- Auto-prefixing -->
+            <div v-bind:style="{ transform: 'rotate(7deg)' }">test</div>
+            <!-- Auto-prefixing End -->
         </div>
         <script type="text/javascript">
             new Vue({
