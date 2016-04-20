@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Instance Lifecycle</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var vm = new Vue({
+                data: {
+                    a: 2333
+                },
+                created: function () {  // more for example compiled, ready and
+                                        // destroyed.
+                    // `this` points to the vm instance
+                    console.log('a is: ' + this.a)
+                }
+            })
+        </script>
+    </body>
+</html>
