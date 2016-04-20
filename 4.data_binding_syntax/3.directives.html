@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Directives</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body id="app">
+        <p v-if="show">Hello!</p>
+
+        <!-- Arguments -->
+        <a v-bind:href="url">test a {{ url }}</a><br>
+        <a href="{{url}}">test b {{ url }}</a><br>
+        <input v-model="url"><br>
+
+        <!-- <a v-on:click="doSomething"> -->
+
+        <!-- Modifiers -->
+        <a v-bind:href.literal="/a/b/c">test c</a><br>
+    </body>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                url: 'https://'
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Binding Expressions</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body id="app">
+        <!-- JavaScript Expressions -->
+        <div>{{ number }} + 1 = {{ number + 1 }}</div>
+        <div>{{ number + 1 == 2 ? 'Yes' : 'No' }}</div>
+        <div>{{ message.split('').reverse().join('') }}</div>
+
+        <!-- this is a statement, not an expression: -->
+        <div>{{ var a = 1 }}</div>
+        <!-- flow control won't work either, use ternary expressions -->
+        <div>{{ if (number) { return message } }}</div>
+
+        <!-- Filters -->
+        <div>{{ message | capitalize }}</div>
+
+        <!-- Filters can be chained:
+        {{ message | filterA | filterB }}
+
+        Filters can also take arguments:
+        {{ message | filterA 'arg1' arg2 }} -->
+    </body>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                number: 1,
+                message: 'result: 2'
+            }
+        })
+    </script>
+</html>

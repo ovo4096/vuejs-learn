@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Interpolations</title>
+        <style media="screen">
+            .red {
+                color: red;
+            }
+        </style>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body id="app">
+        <!-- Text -->
+        <p>Message: {{ message }}</p>
+        <p>Message: {{* message }}</p>
+        <input v-model="message">
+
+        <!-- Raw HTML -->
+        <div>{{{ raw_html }}}</div>
+
+        <!-- Attributes -->
+        <div class="{{ color }}">Attributes</div>
+    </body>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!',
+                raw_html: '<h1>Raw Html</h1>',
+                color: 'red',
+            }
+        })
+    </script>
+</html>
