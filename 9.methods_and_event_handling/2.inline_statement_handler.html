@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Inline Statement Handler</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button v-on:click="say('hi')">Say Hi</button>
+            <button v-on:click="say('what')">Say What</button>
+            <button v-on:click="sayTagName('so what', $event)">click me!</button>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                methods: {
+                    say: function (msg) {
+                        alert(msg)
+                    },
+                    sayTagName: function (msg, event) {
+                        alert(msg)
+
+                        // now we have access to the native event
+                        alert(event.target.tagName)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

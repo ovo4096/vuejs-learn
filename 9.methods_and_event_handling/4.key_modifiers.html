@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Key Modifiers</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- only call vm.submit() when the keyCode is 13 -->
+            <input v-on:keyup.13="submit">
+            <br>
+
+            <!-- same as above -->
+            <input v-on:keyup.enter="submit">
+            <br>
+
+            <!-- also works for shorthand -->
+            <input @keyup.enter="submit">
+
+            <p>
+                Here's the full list of key modifier aliases:
+            </p>
+            <ul>
+                <li>enter</li>
+                <li>tab</li>
+                <li>delete</li>
+                <li>esc</li>
+                <li>space</li>
+                <li>up</li>
+                <li>down</li>
+                <li>left</li>
+                <li>right</li>
+            </ul>
+
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                methods: {
+                    submit: function () {
+                        alert('submit!')
+                    }
+                }
+            })
+
+            // 1.0.8+: Single letter key aliases are also supported.
+            // 1.0.17+: You can also define custom key modifier aliases:
+            // enable @keyup.f1
+            Vue.directive('on').keyCodes.f1 = 112
+        </script>
+    </body>
+</html>

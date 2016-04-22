@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Method Handler</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button v-on:click="greet">Greet</button>
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    name: 'Vue.js'
+                },
+                // define methods under the `methods` object
+                methods: {
+                    greet: function (event) {
+                        // `this` inside methods point to the Vue instance
+                        alert('Hello ' + this.name + '!')
+
+                        // `event` is the native DOM event
+                        alert(event.target.tagName)
+                    }
+                }
+            })
+
+            // you can invoke methods in JavaScript too
+            vm.greet() // -> 'Hello Vue.js!'
+        </script>
+    </body>
+</html>

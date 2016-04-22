@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Event Modifiers</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- the click event's propagation will be stoped -->
+            <p v-on:click="doIt">
+                WOW!
+                <a v-on:click.stop="doThis">only do this</a>
+            </p>
+
+            <!-- this submit event will no longer reload the page -->
+            <form v-on:submit.prevent="onSubmit">
+                <button type="submit" name="button">submit</button>
+            </form>
+
+            <!-- modifiers can be chained -->
+            <a v-on:click.stop.prevent="doThat"></a>
+
+            <!-- just the modifier -->
+            <form v-on:submit.prevent></form>
+
+            <!-- only trigger handler if event.target is the element itself -->
+            <!-- i.e. not from a child element -->
+            <div v-on:click.self="doIt">
+                doIt!
+                <div v-on:click="doThis">
+                    doThis!
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                methods: {
+                    doThis: function () {
+                        alert('doThis!');
+                    },
+                    doIt: function () {
+                        alert('doIt!');
+                    },
+                    doThat: function () {
+                        alert('doThat!')
+                    },
+                    onSubmit: function () {
+                        alert('submit!')
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
