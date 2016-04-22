@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-show</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!--
+            v-show simply toggles the display CSS property of the element.
+            Note that v-show doesn't support the <template> syntax.
+            -->
+            <h1 v-show="ok">Hello!</h1>
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    ok: true
+                }
+            })
+        </script>
+    </body>
+</html>

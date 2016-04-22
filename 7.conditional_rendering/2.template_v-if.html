@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Template v-if</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <template v-if="ok">
+                <h1>Title</h1>
+                <p>
+                    Paragraph 1
+                </p>
+                <p>
+                    Paragraph 2
+                </p>
+            </template>
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    ok: true,
+                }
+            })
+        </script>
+    </body>
+</html>

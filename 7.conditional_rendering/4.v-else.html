@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-else</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!--
+            The v-else element must immediately follow the v-if or v-show
+            element otherwise it will not be recognized.
+            -->
+            <div v-if="Math.random() > 0.5">
+                Sorry
+            </div>
+            <div v-else>
+                Not sorry
+            </div>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app'
+            })
+        </script>
+    </body>
+</html>
