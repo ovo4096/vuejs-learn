@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-for</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="item in items">
+                    {{ item.message }}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="item in items">
+                    {{ $index }} - {{ item.message }}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="(aliasIndex, item) in items">
+                    {{ aliasIndex }} - {{ item.message }}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="item of items">
+                    {{ $index + 1 }} - {{ item.message }}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    items: [
+                        { message: 'Foo' },
+                        { message: 'Bar' }
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>

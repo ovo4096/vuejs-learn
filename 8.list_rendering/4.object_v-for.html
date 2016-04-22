@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Object v-for</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="value in object">
+                    {{ $key }} : {{ value }}
+                </li>
+            </ul>
+
+            <ul>
+                <li v-for="(aliasKey, aliasValue) in object">
+                    {{ aliasKey }} : {{ aliasValue }}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    object: {
+                        FirstName: 'John',
+                        LastName: 'Doe',
+                        Age: 30
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
