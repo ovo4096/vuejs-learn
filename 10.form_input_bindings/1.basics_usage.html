@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Basics Usage</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- Text -->
+            <div>
+                <span>Message is: {{ message }}</span>
+                <br>
+                <input type="text" v-model="message" placeholder="edit me">
+            </div>
+
+            <!-- Checkbox -->
+            <div>
+                <input type="checkbox" id="checkbox" v-model="checked">
+                <label for="checkbox">{{ checked }}</label>
+            </div>
+            <div>
+                <input type="checkbox" id="jack" value="Jack"
+                    v-model="checkedNames">
+                <label for="jack">Jack</label>
+                <input type="checkbox" id="john" value="John"
+                    v-model="checkedNames">
+                <label for="john">John</label>
+                <input type="checkbox" id="mike" value="Mike"
+                    v-model="checkedNames">
+                <br>
+                <span>Checked names: {{ checkedNames | json }}</span>
+            </div>
+
+            <!-- Radio -->
+            <div>
+                <input type="radio" id="one" value="One" v-model="picked">
+                <label for="one">One</label>
+                <br>
+                <input type="radio" id="two" value="Two" v-model="picked">
+                <label for="two">Two</label>
+                <br>
+                <span>Picked: {{ picked }}</span>
+            </div>
+
+            <!-- Select -->
+            <div>
+                <select v-model="selected">
+                    <option selected>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+                <span>Selected: {{ selected }}</span>
+            </div>
+            <div>
+                <select v-model="selected" multiple>
+                    <option selected>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+                <br>
+                <span>Selected: {{ selected | json }}</span>
+            </div>
+            <div>
+                <select v-model="selected">
+                    <option v-for="option in options"
+                        v-bind:value="option.value">
+                        {{ option.text }}
+                    </option>
+                </select>
+                <span>Selected: {{ selected }}</span>
+            </div>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    message: '',
+                    checked: false,
+                    checkedNames: [],
+                    selected: 'A',
+                    options: [
+                        { text: 'One', value: 'A' },
+                        { text: 'Two', value: 'B' },
+                        { text: 'Three', value: 'C' }
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>

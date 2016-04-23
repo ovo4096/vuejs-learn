@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Value Bindings</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- Checkbox -->
+            <div>
+                <input
+                    type="checkbox"
+                    v-model="toggle"
+                    v-bind:true-value="a"
+                    v-bind:false-value="b">
+                <span>{{ toggle }}</span>
+                <br>
+                <span>result A: {{ ra }}</span>
+                <br>
+                <span>result B: {{ rb }}</span>
+            </div>
+
+            <!-- Radio -->
+            <div>
+                <input type="radio" v-model="pick" v-bind:value="a">
+                <input type="radio" v-model="pick" v-bind:value="b">
+                <span>{{ pick }}</span>
+            </div>
+
+            <!-- Select Options -->
+            <div>
+                <select v-model="selected">
+                    <!-- inline object literal -->
+                    <option v-bind:value="{ number: 123 }">123</option>
+                </select>
+                <span>{{ selected.number }}</span>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    toggle: 'b',
+                    a: 'a',
+                    b: 'b',
+
+                    pick: 'a',
+                },
+                computed: {
+                    ra: function () {
+                        return this.toggle === this.a;
+                    },
+                    rb: function () {
+                        return this.toggle === this.b;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
