@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Custom Transition Classes</title>
+        <link rel="stylesheet" href="./animate.css" charset="utf-8">
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div v-show="ok" class="animated" transition="bounce">
+                Watch me bounce
+            </div>
+            <button v-on:click="test">test</button>
+        </div>
+        <script type="text/javascript">
+            Vue.transition('bounce', {
+                enterClass: 'bounceInLeft',
+                leaveClass: 'bounceOutRight'
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    ok: true,
+                },
+                methods: {
+                    test: function () {
+                        this.ok = !this.ok
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

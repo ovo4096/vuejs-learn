@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Staggering Transitions</title>
+        <link rel="stylesheet" href="./animate.css">
+
+        <style media="screen">
+            ul {
+                padding-left: 0;
+                font-family: Helvetica, Arial, sans-serif;
+            }
+            .staggered-transition {
+                transition: all .5s ease;
+                overflow: hidden;
+                margin: 0;
+                height: 20px;
+            }
+            .staggered-enter, .staggered-leave {
+                opacity: 0;
+                height: 0;
+            }
+        </style>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input v-model="query">
+            <ul>
+                <li v-for="item in items | filterBy query"
+                    transition="staggered" stagger="100">{{ item.message }}</li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    query: '',
+                    items: [
+                        { message: 'abc' },
+                        { message: 'def' },
+                        { message: 'ghi' },
+                        { message: 'jkl' },
+                        { message: 'mno' },
+                        { message: 'pqr' },
+                        { message: 'squ' },
+                        { message: 'vwx' },
+                        { message: 'yz'}
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>

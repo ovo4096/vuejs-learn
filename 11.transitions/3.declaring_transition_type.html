@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Declaring Transition Type</title>
+        <link rel="stylesheet" href="./animate.css">
+        <style media="screen">
+            .bounce-transition {
+                display: inline-block;
+            }
+
+            .bounce-enter {
+                animation: bounce-in .5s;
+            }
+
+            .bounce-leave {
+                animation: bounce-out .5s;
+            }
+
+            @keyframes bounce-in {
+                0% {
+                    transform: scale(0);
+                }
+                50% {
+                    transform: scale(1.5);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes bounce-out {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.5);
+                }
+                100% {
+                    transform: scale(0);
+                }
+            }
+        </style>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <span v-show="show" transition="bounce">Look at me</span><br>
+            <button v-on:click="toggle">Toggle</button>
+        </div>
+        <script type="text/javascript">
+            // Here the use of the wrong type, the animation will end when the
+            // class can not correctly cleared.
+            // css_animations.html is correct.
+            Vue.transition('bounce', {
+                type: 'transition'
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    show: true
+                },
+                methods: {
+                    toggle: function () {
+                        this.show = !this.show;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Transitions</title>
+        <style media="screen">
+            .expand-transition {
+                transition: all .3s ease;
+                height: 30px;
+                padding: 10px;
+                background-color: #eee;
+                overflow: hidden;
+            }
+
+            .expand-enter, .expand-leave {
+                height: 0;
+                padding: 0 10px;
+                opacity: 0;
+            }
+        </style>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div v-if="show" :transition="transitionName">hello</div>
+            <button v-on:click="foo">show</button>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data: {
+                    show: false,
+                    transitionName: 'expand'
+                },
+                methods: {
+                    foo: function () {
+                        this.show = !this.show;
+                    }
+                }
+            })
+
+            // hooks
+            Vue.transition('expand', {
+                beforeEnter: function (el) {
+                    el.textContent = 'beforeEnter'
+                },
+                enter: function (el) {
+                    el.textContent = 'enter'
+                },
+                afterEnter: function (el) {
+                    el.textContent = 'afterEnter'
+                },
+                enterCancelled: function (el) {
+                    // handle cancellation
+                },
+                beforeLeave: function (el) {
+                    el.textContent = 'beforeLeave'
+                },
+                leave: function (el) {
+                    el.textContent = 'leave'
+                },
+                afterLeave: function (el) {
+                    el.textContent = 'afterLeave'
+                },
+                leaveCancelled: function (el) {
+                    // handle cancellation
+                }
+            })
+        </script>
+    </body>
+</html>
