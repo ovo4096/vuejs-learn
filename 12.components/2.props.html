@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Props</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input v-model="dynamicProp">
+            <parent message="fuck!" main-message="too"
+                v-bind:dynamic-message-one="dynamicProp"
+                v-bind:dynamic-message-sync.sync="dynamicProp"
+                v-bind:dynamic-message-once.once="dynamicProp"></parent>
+
+            <example :prop-a="100" prop-b="src"></example>
+        </div>
+        <script type="text/javascript">
+            Vue.component('parent', {
+                template: 'say: {{ message }} {{ mainMessage }}<br>\
+                one:<input v-model="dynamicMessageOne"><br>\
+                sync:<input v-model="dynamicMessageSync"><br>\
+                once:<input v-model="dynamicMessageOnce"><br>',
+                props: ['message', 'mainMessage', 'dynamicMessageOne',
+                'dynamicMessageSync', 'dynamicMessageOnce']
+            })
+
+            Vue.component('example', {
+                template: '<div>{{ propA }} {{ propB }}</div>',
+                props: {
+                    propA: Number,
+                    propM: [String, Number],
+                    propB: {
+                        type: String,
+                        required: true
+                    },
+                    propC: {
+                        type: Number,
+                        default: 100
+                    },
+                    propD: {
+                        type: Object,
+                        default: function () {
+                            return { msg: 'hello' }
+                        }
+                    },
+                    propE: {
+                        validator: function (value) {
+                            return value > 10
+                        }
+                    },
+                    propG: {
+                        coerce: function (val) {
+                            return val + ''
+                        }
+                    },
+                    // propH: {
+                    //     coerce: function (val) {
+                    //         return JSON.parse(val)
+                    //     }
+                    // }
+                }
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    dynamicProp: 'test'
+                }
+            })
+        </script>
+    </body>
+</html>

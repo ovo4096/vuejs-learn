@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dynamic Components</title>
+        <style media="screen">
+            .fade-transition {
+                transition: opacity 1s ease;
+            }
+            .fade-enter, .fade-leave {
+                opacity: 0;
+            }
+        </style>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <component :is="currentView"
+            transition="fade"
+            transition-mode="out-in">
+        </component>
+        <select v-model="currentView">
+            <option value="home" selected>Home</option>
+            <option value="posts">Posts</option>
+            <option value="archive">Archive</option>
+        </select>
+
+        <script type="text/javascript">
+            new Vue({
+                el: 'body',
+                data: {
+                    currentView: 'home'
+                },
+                components: {
+                    home: { template: '<div>home</div>' },
+                    posts: { template: '<div>posts</div>' },
+                    archive: {
+                        template: '<div>archive</div>',
+                        activate: function (done) {
+                            var self = this
+                            alert('!')
+                            done()
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

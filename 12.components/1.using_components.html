@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Using Components</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <my-component>
+            </my-component>
+            <sugar></sugar>
+            <sugar></sugar>
+
+            <ul>
+                <li is="li-component"></li>
+                <li is="li-component"></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            var Child = Vue.extend({
+                template: '<div>A custom child component!</div>'
+            })
+
+            var MyComponent = Vue.extend({
+                template: '<div>A custom component!\
+                <my-child-component></my-child-component></div>',
+
+                components: {
+                    'my-child-component': Child
+                }
+            })
+
+            Vue.component('my-component', MyComponent)
+
+            Vue.component('sugar', {
+                template: '<div>sugar! {{ a }}</div><local-sugar></local-sugar>',
+                components: {
+                    'local-sugar': {
+                        template: '<div>local sugar!</div>'
+                    }
+                },
+                data: function () {
+                    return { a: 1 }
+                }
+            })
+
+            Vue.component('li-component', {
+                template: '<li>list item</li>'
+            })
+
+            new Vue({
+                el: '#app'
+            })
+        </script>
+    </body>
+</html>

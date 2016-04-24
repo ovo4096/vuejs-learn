@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Content Distribution with Slots</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="my-component-template">
+            <h1>This is my component!</h1>
+            <slot>
+                This will only be displayed if there is no content to be
+                distributed.
+            </slot>
+        </div>
+
+        <div id="multi-insertion-template">
+            <slot name="one"></slot>
+            <slot></slot>
+            <slot name="two"></slot>
+        </div>
+
+        <hr>
+        <div id="app">
+            <my-component>
+                <p>This is some original content</p>
+                <p>This is some more original content</p>
+            </my-component>
+
+            <multi-insertion>
+                <p slot="one">One</p>
+                <p slot="two">Two</p>
+                <p>Default A</p>
+            </multi-insertion>
+        </div>
+        <script type="text/javascript">
+            Vue.component('my-component', {
+                template: '#my-component-template'
+            })
+
+            Vue.component('multi-insertion', {
+                template: '#multi-insertion-template'
+            })
+
+            new Vue({
+                el: '#app'
+            })
+        </script>
+    </body>
+</html>
