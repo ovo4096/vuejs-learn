@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Change Detection Caveats</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{ a }}<br>
+            {{ b }}<br>
+            {{ c }}<br>
+        </div>
+        <script type="text/javascript">
+            var data = { a: 1 }
+            var vm = new Vue({
+                el: '#app',
+                data: data
+            })
+            // vm.b = 2 wrong
+
+            vm.$set('b', 2)
+
+            // global method
+            Vue.set(data, 'c', 3)
+        </script>
+    </body>
+</html>

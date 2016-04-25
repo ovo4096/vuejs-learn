@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Inside Computed Properties</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{ example }}<br>
+            {{ example }}<br>
+            {{ example }}<br>
+            {{ example }}<br>
+            {{ example }}<br>
+            {{ example }}<br>
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hi'
+                },
+                computed: {
+                    example:{
+                        cache: false,
+                        get: function () {
+                            for (var i = 0; i < 9999999; i++);
+                            return Date.now() + this.msg
+                        }
+                    }
+                }
+            })
+
+            console.log(vm.example)
+            console.log(vm.example)
+            console.log(vm.example)
+            console.log(vm.example)
+            console.log(vm.example)
+            console.log(vm.example)
+        </script>
+    </body>
+</html>
