@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Advanced Options</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input v-model="message">
+            <div v-example v-bind:a="message" b="joe"></div>
+
+            <input v-model="obj.value">
+            <div v-deep-example="obj"></div>
+
+            <input v-two-way-example="test">
+            <div>{{ test }}</div>
+
+            <div v-accept-statement-example="a++"></div>
+            <div>{{ a }}</div>
+        </div>
+        <script type="text/javascript">
+            // params
+            Vue.directive('example', {
+                params: ['a', 'b'],
+                paramWatchers: {
+                    a: function (newValue, oldValue) {
+                        console.log(oldValue + ' change to ' + newValue)
+                    }
+                },
+                bind: function () {
+                    console.log(this.params.a)
+                    console.log(this.params.b)
+                },
+                update: function () {
+                    console.log(this.params.a)
+                    console.log(this.params.b)
+                }
+            })
+
+            // deep
+            Vue.directive('deep-example', {
+                deep: true,
+                update: function (obj) {
+                    console.log(obj.value)
+                }
+            })
+
+            // twoWay
+            Vue.directive('two-way-example', {
+                twoWay: true,
+                bind: function () {
+                    this.handler = function () {
+                        this.set(this.el.value)
+                        // console.log(this.el.value)
+                    }.bind(this)
+                    this.el.addEventListener('input', this.handler)
+                },
+                unbind: function () {
+                    this.el.removeEventListener('input', this.handler)
+                }
+            })
+
+            // acceptStatement
+            Vue.directive('acceptStatementExample', {
+                acceptStatement: true,
+                update: function (fn) {
+                    fn()
+                }
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'hello!',
+                    obj: { value: 'deep throat!' },
+                    test: 'test',
+                    a: 1
+                }
+            })
+        </script>
+    </body>
+</html>
