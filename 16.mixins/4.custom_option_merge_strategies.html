@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Custom Option Merge Strategies</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            Vue.config.optionMergeStrategies.myOption =
+                function (toVal, fromVal) {
+                    if (typeof toVal == 'undefined') {
+                        return fromVal
+                    } else {
+                        return toVal
+                    }
+                }
+
+            var mixin = {
+                myOption: 'test',
+            }
+
+            var vm = new Vue({
+                mixins: [mixin],
+                myOption: 'vmtest',
+                created: function () {
+                    console.log(this.$options.myOption)
+                }
+            })
+        </script>
+    </body>
+</html>
