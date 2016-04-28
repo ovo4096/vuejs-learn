@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dynamic Arguments</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input v-model="userInput">
+            <span>{{ msg | concat userInput }}</span>
+        </div>
+        <script type="text/javascript">
+            Vue.filter('concat', function (value, input) {
+                return value + input
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    userInput: 'test',
+                    msg: 'hello!'
+                }
+            })
+        </script>
+    </body>
+</html>

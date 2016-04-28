@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Basics</title>
+        <script src="../vue.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="app">
+            <span v-text="message | reverse"></span>
+            <span v-text="message | wrap 'before' 'after'"></span>
+        </div>
+        <script type="text/javascript">
+            Vue.filter('reverse', function (value) {
+                return value.split('').reverse().join('')
+            })
+
+            Vue.filter('wrap', function (value, begin, end) {
+                return begin + value + end
+            })
+
+
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'abc'
+                }
+            })
+        </script>
+    </body>
+</html>
